@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{#if title}}{{title}} | {{/if}}E-commerce</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="icon" type="image/png" href="/img/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+{{!-- views/layouts/main.hbs (Solución 1) --}}
+
+<body class="d-flex flex-column min-vh-100">
+
+    <div class="container-fluid g-0 d-flex flex-grow-1">
+
+        {{#if showSidebar}}
+        {{> sidebar}}
+        {{/if}}
+
+        <div class="
+            {{#if showSidebar}}col-12 col-lg-9 col-xl-10{{else}}col-12{{/if}} 
+            d-flex flex-column flex-grow-1">
+            {{!-- Navbar: SIN div.sticky-top --}}
+            {{> navbar}}
+
+            {{!-- Contenido principal: Solo flex-grow-1 y espaciado normal --}}
+            <main class="container-fluid py-3 flex-grow-1">
+                {{> flash}}
+                {{{body}}}
+            </main>
+
+            {{!-- 🔑 CLAVE: Footer con mt-auto para pegarse al final --}}
+            <footer class="mt-auto">
+                {{> footer}}
+            </footer>
+        </div>
+
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+
+</html>
